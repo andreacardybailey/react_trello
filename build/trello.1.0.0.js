@@ -44,60 +44,89 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(33);
 	
-	// the card component
-	var Card = function Card() {
-	  var toDoItem = 'do laundry';
+	var Trello = React.createClass({
+	  displayName: "Trello",
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      title: "Things to get done",
+	      lists: [{
+	        id: "0",
+	        title: "To do",
+	        cards: ["do laundry", "clean dishes"]
+	      }, {
+	        id: "1",
+	        title: "In progress",
+	        cards: ["vacuum", "dust"]
+	      }, {
+	        id: "2",
+	        title: "Completed",
+	        cards: ["wash car", "mow lawn"]
+	      }]
+	    };
+	  },
+	  render: function render() {
+	    return React.createElement(Board, { boardState: this.state });
+	  }
+	});
+	
+	//The Board component should consist of a number of List components
+	var Board = function Board(props) {
+	  var lists = [];
+	  for (var i = 0; i < props.boardState.lists.length; i++) {
+	    lists.push(React.createElement(List, { listItem: props.boardState.lists[i] }));
+	  }
 	  return React.createElement(
-	    'li',
-	    { className: 'card' },
-	    toDoItem
+	    "div",
+	    { className: "board clearfix", key: "10" },
+	    React.createElement(
+	      "h1",
+	      null,
+	      props.boardState.title
+	    ),
+	    lists
 	  );
 	};
 	
-	//the List component should contain a number of Cards.
-	var List = function List() {
-	  var listTitle = "To Do:";
+	// the List component should contain a number of Cards.
+	var List = function List(props) {
+	  var cards = [];
+	  for (var i = 0; i < props.listItem.cards.length; i++) {
+	    cards.push(React.createElement(Card, { text: props.listItem.cards[i] }));
+	  }
+	
 	  return React.createElement(
-	    'div',
-	    { className: 'list' },
+	    "div",
+	    { className: "list" },
 	    React.createElement(
-	      'h2',
+	      "h2",
 	      null,
-	      listTitle
+	      props.listItem.title
 	    ),
 	    React.createElement(
-	      'ul',
-	      { className: 'cards' },
-	      React.createElement(Card, null),
-	      React.createElement(Card, null)
+	      "ul",
+	      { className: "cards" },
+	      cards
 	    )
 	  );
 	};
 	
-	//The Board component should consist of a number of List components
-	var Board = function Board() {
-	  var boardTitle = "Things to get done";
+	// the Card component
+	var Card = function Card(props) {
 	  return React.createElement(
-	    'div',
-	    { className: 'board clearfix' },
-	    React.createElement(
-	      'h1',
-	      null,
-	      boardTitle
-	    ),
-	    React.createElement(List, null),
-	    React.createElement(List, null),
-	    React.createElement(List, null)
+	    "li",
+	    { className: "card" },
+	    props.text
 	  );
 	};
 	
-	document.addEventListener('DOMContentLoaded', function () {
-	  ReactDOM.render(React.createElement(Board, null), document.getElementById('app'));
+	document.addEventListener("DOMContentLoaded", function () {
+	  ReactDOM.render(React.createElement(Trello, null), document.getElementById("app"));
 	});
 
 /***/ },
