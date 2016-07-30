@@ -1,0 +1,57 @@
+* {
+  margin:0;
+  padding: 0;
+  font-family: Arial, 'sans-serif';
+}
+h1 {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.board {
+  background: #1ca5cb;
+  padding: 1rem;
+}
+.list {
+  background: #777;
+  margin: 1rem 0;
+  border-radius: 4px;
+  padding: .5rem 1%;
+}
+@media (min-width: 600px) {
+  .list {
+    width: 30%;
+    float: left;
+    margin-right: 2%;
+    
+  }
+  .list:last-child {
+    margin-right: 0;
+  }
+}
+.list h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: .3rem;
+  margin-bottom:.5rem;
+}
+.cards {
+  list-style-type: none;
+}
+.card {
+  padding: .3rem;
+  background: white;
+  border-radius: 4px;
+  margin: .3rem;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clearfix:after {
+    clear: both;
+}
