@@ -75,7 +75,7 @@
 	  }
 	});
 	
-	//The Board component should consist of a number of List components
+	// The Board component should consist of a number of List components
 	var Board = function Board(props) {
 	  var lists = [];
 	  for (var i = 0; i < props.boardState.lists.length; i++) {
@@ -92,7 +92,6 @@
 	    lists
 	  );
 	};
-	
 	// the List component should contain a number of Cards.
 	var List = function List(props) {
 	  var cards = [];
@@ -115,7 +114,6 @@
 	    )
 	  );
 	};
-	
 	// the Card component
 	var Card = function Card(props) {
 	  return React.createElement(

@@ -31,8 +31,8 @@ var Trello = React.createClass({
   }
 });
 
-//The Board component should consist of a number of List components
- var Board = function(props) {
+// The Board component should consist of a number of List components
+var Board = function(props) {
   var lists = [];
   for (var i=0; i<props.boardState.lists.length; i++) {
     lists.push(<List listItem={props.boardState.lists[i]} />);
@@ -43,10 +43,9 @@ var Trello = React.createClass({
       {lists}
     </div>
   );
- };
-
-  // the List component should contain a number of Cards.
- var List = function(props) {
+};
+// the List component should contain a number of Cards.
+var List = function(props) {
   var cards = [];
   for (var i=0; i<props.listItem.cards.length; i++) {
     cards.push(<Card text={props.listItem.cards[i]}/>)
@@ -60,8 +59,7 @@ var Trello = React.createClass({
       </ul>
     </div>
   );
- };
-
+};
 // the Card component
 var Card = function(props) {
   return (
