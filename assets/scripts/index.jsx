@@ -7,19 +7,16 @@ var Trello = React.createClass({
       title: "Things to get done",
       lists: [
           {
-              id: "0",
-              title: "To do",
-              cards: ["do laundry", "clean dishes"]
+            title: "To do",
+            cards: ["do laundry", "clean dishes"]
           },
           {
-              id: "1",
-              title: "In progress",
-              cards: ["vacuum", "dust"]
+            title: "In progress",
+            cards: ["vacuum", "dust"]
           },
           {
-              id: "2",
-              title: "Completed",
-              cards: ["wash car", "mow lawn"]
+            title: "Completed",
+            cards: ["wash car", "mow lawn"]
           }
       ]
     };
@@ -35,10 +32,10 @@ var Trello = React.createClass({
 var Board = function(props) {
   var lists = [];
   for (var i=0; i<props.boardState.lists.length; i++) {
-    lists.push(<List listItem={props.boardState.lists[i]} />);
+    lists.push(<List listItem={props.boardState.lists[i]} key={i} />);
   }
   return (
-    <div className="board clearfix" key="10">
+    <div className="board clearfix">
       <h1>{props.boardState.title}</h1>
       {lists}
     </div>
@@ -48,7 +45,7 @@ var Board = function(props) {
 var List = function(props) {
   var cards = [];
   for (var i=0; i<props.listItem.cards.length; i++) {
-    cards.push(<Card text={props.listItem.cards[i]}/>)
+    cards.push(<Card text={props.listItem.cards[i]} key={i} />)
   }
 
   return (

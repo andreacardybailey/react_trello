@@ -56,15 +56,12 @@
 	    return {
 	      title: "Things to get done",
 	      lists: [{
-	        id: "0",
 	        title: "To do",
 	        cards: ["do laundry", "clean dishes"]
 	      }, {
-	        id: "1",
 	        title: "In progress",
 	        cards: ["vacuum", "dust"]
 	      }, {
-	        id: "2",
 	        title: "Completed",
 	        cards: ["wash car", "mow lawn"]
 	      }]
@@ -79,11 +76,11 @@
 	var Board = function Board(props) {
 	  var lists = [];
 	  for (var i = 0; i < props.boardState.lists.length; i++) {
-	    lists.push(React.createElement(List, { listItem: props.boardState.lists[i] }));
+	    lists.push(React.createElement(List, { listItem: props.boardState.lists[i], key: i }));
 	  }
 	  return React.createElement(
 	    "div",
-	    { className: "board clearfix", key: "10" },
+	    { className: "board clearfix" },
 	    React.createElement(
 	      "h1",
 	      null,
@@ -96,7 +93,7 @@
 	var List = function List(props) {
 	  var cards = [];
 	  for (var i = 0; i < props.listItem.cards.length; i++) {
-	    cards.push(React.createElement(Card, { text: props.listItem.cards[i] }));
+	    cards.push(React.createElement(Card, { text: props.listItem.cards[i], key: i }));
 	  }
 	
 	  return React.createElement(
