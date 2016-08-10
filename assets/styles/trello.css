@@ -38,11 +38,15 @@ h1 {
 .cards {
   list-style-type: none;
 }
-.card {
+.card, input {
   padding: .3rem;
   background: white;
   border-radius: 4px;
   margin: .3rem;
+}
+input {
+  font-size: .8rem;
+  border: none;
 }
 
 .clearfix:before,

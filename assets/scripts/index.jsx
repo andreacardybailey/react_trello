@@ -4,6 +4,13 @@ var ReactDOM = require("react-dom");
 var Trello = React.createClass({
   getInitialState: function() {
     return {
+      onAddInputChanged: function() {
+        console.log('onAddInputChanged');
+      },
+      onAddSubmit: function(e) {
+        e.preventDefault();
+        console.log('onAddSubmit');
+      },
       title: "Things to get done",
       lists: [
           {
@@ -32,7 +39,7 @@ var Trello = React.createClass({
 var Board = function(props) {
   var lists = [];
   for (var i=0; i<props.boardState.lists.length; i++) {
-    lists.push(<List listItem={props.boardState.lists[i]} key={i} />);
+    lists.push(<List onAddInputChanged={props.boardState.onAddInputChanged} onAddSubmit={props.boardState.onAddSubmit} listItem={props.boardState.lists[i]} key={i} />);
   }
   return (
     <div className="board clearfix">
@@ -41,22 +48,27 @@ var Board = function(props) {
     </div>
   );
 };
+
 // the List component should contain a number of Cards.
 var List = function(props) {
   var cards = [];
   for (var i=0; i<props.listItem.cards.length; i++) {
     cards.push(<Card text={props.listItem.cards[i]} key={i} />)
   }
-
   return (
     <div className="list">
       <h2>{props.listItem.title}</h2>
       <ul className="cards">
         {cards}
       </ul>
+      <form onSubmit={props.onAddSubmit}>
+        <input type="text" name="card" placeholder="Add card" onChange={props.onAddInputChanged} />
+        <input type="submit" />
+      </form>
     </div>
   );
 };
+
 // the Card component
 var Card = function(props) {
   return (
