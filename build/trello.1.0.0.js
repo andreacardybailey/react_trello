@@ -54,23 +54,13 @@
 	
 	  getInitialState: function getInitialState() {
 	    return {
-	      onAddInputChanged: function onAddInputChanged() {
-	        console.log('onAddInputChanged');
-	      },
-	      onAddSubmit: function onAddSubmit(e) {
-	        e.preventDefault();
-	        console.log('onAddSubmit');
-	      },
 	      title: "Things to get done",
 	      lists: [{
-	        title: "To do",
-	        cards: ["do laundry", "clean dishes"]
+	        title: "To do"
 	      }, {
-	        title: "In progress",
-	        cards: ["vacuum", "dust"]
+	        title: "In progress"
 	      }, {
-	        title: "Completed",
-	        cards: ["wash car", "mow lawn"]
+	        title: "Completed"
 	      }]
 	    };
 	  },
@@ -81,9 +71,9 @@
 	
 	// The Board component should consist of a number of List components
 	var Board = function Board(props) {
-	  var lists = [];
+	  var listContainers = [];
 	  for (var i = 0; i < props.boardState.lists.length; i++) {
-	    lists.push(React.createElement(List, { onAddInputChanged: props.boardState.onAddInputChanged, onAddSubmit: props.boardState.onAddSubmit, listItem: props.boardState.lists[i], key: i }));
+	    listContainers.push(React.createElement(ListContainer, { listItem: props.boardState.lists[i], key: i, title: props.boardState.lists[i].title }));
 	  }
 	  return React.createElement(
 	    "div",
@@ -93,15 +83,44 @@
 	      null,
 	      props.boardState.title
 	    ),
-	    lists
+	    listContainers
 	  );
 	};
+	
+	var ListContainer = React.createClass({
+	  displayName: "ListContainer",
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      text: "",
+	      cards: []
+	    };
+	  },
+	  onAddInputChanged: function onAddInputChanged(e) {
+	    var userInput = e.target.value;
+	    this.setState({
+	      text: userInput
+	    });
+	  },
+	  onAddSubmit: function onAddSubmit(e) {
+	    e.preventDefault();
+	    var newList = this.state.cards;
+	    newList.push(this.state.text);
+	    this.setState({
+	      cards: newList
+	    });
+	    this.state.text = "";
+	  },
+	  render: function render() {
+	    return React.createElement(List, { listState: this.state, title: this.props.title, onAddSubmit: this.onAddSubmit, onAddInputChanged: this.onAddInputChanged, cards: this.props.cards, text: this.state.text });
+	  }
+	});
 	
 	// the List component should contain a number of Cards.
 	var List = function List(props) {
 	  var cards = [];
-	  for (var i = 0; i < props.listItem.cards.length; i++) {
-	    cards.push(React.createElement(Card, { text: props.listItem.cards[i], key: i }));
+	  for (var i = 0; i < props.listState.cards.length; i++) {
+	    cards.push(React.createElement(Card, { text: props.listState.cards[i], key: i }));
 	  }
 	  return React.createElement(
 	    "div",
@@ -109,7 +128,7 @@
 	    React.createElement(
 	      "h2",
 	      null,
-	      props.listItem.title
+	      props.title
 	    ),
 	    React.createElement(
 	      "ul",
@@ -119,7 +138,7 @@
 	    React.createElement(
 	      "form",
 	      { onSubmit: props.onAddSubmit },
-	      React.createElement("input", { type: "text", name: "card", placeholder: "Add card", onChange: props.onAddInputChanged }),
+	      React.createElement("input", { type: "text", name: "card", placeholder: "Add card", onChange: props.onAddInputChanged, value: props.text }),
 	      React.createElement("input", { type: "submit" })
 	    )
 	  );
