@@ -29,7 +29,10 @@ var Trello = React.createClass({
 var Board = function(props) {
   var listContainers = [];
   for (var i=0; i<props.boardState.lists.length; i++) {
-    listContainers.push(<ListContainer listItem={props.boardState.lists[i]} key={i} title={props.boardState.lists[i].title} />);
+    listContainers.push(<ListContainer listItem={props.boardState.lists[i]} 
+                                       key={i} 
+                                       title={props.boardState.lists[i].title} 
+                        />);
   }
   return (
     <div className="board clearfix">
@@ -63,7 +66,13 @@ var ListContainer = React.createClass({
   },
   render: function() {
     return (
-      <List listState={this.state} title={this.props.title} onAddSubmit={this.onAddSubmit} onAddInputChanged={this.onAddInputChanged} cards={this.props.cards} text={this.state.text} />
+      <List listState={this.state} 
+            title={this.props.title} 
+            onAddSubmit={this.onAddSubmit}
+            onAddInputChanged={this.onAddInputChanged}
+            cards={this.state.cards} 
+            text={this.state.text} 
+      />
     );
   }
 });
@@ -72,7 +81,9 @@ var ListContainer = React.createClass({
 var List = function(props) {
   var cards = [];
   for (var i=0; i<props.listState.cards.length; i++) {
-    cards.push(<Card text={props.listState.cards[i]} key={i} />)
+    cards.push(<Card text={props.listState.cards[i]} 
+                     key={i} 
+              />)
   }
   return (
     <div className="list">

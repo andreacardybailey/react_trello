@@ -73,7 +73,10 @@
 	var Board = function Board(props) {
 	  var listContainers = [];
 	  for (var i = 0; i < props.boardState.lists.length; i++) {
-	    listContainers.push(React.createElement(ListContainer, { listItem: props.boardState.lists[i], key: i, title: props.boardState.lists[i].title }));
+	    listContainers.push(React.createElement(ListContainer, { listItem: props.boardState.lists[i],
+	      key: i,
+	      title: props.boardState.lists[i].title
+	    }));
 	  }
 	  return React.createElement(
 	    "div",
@@ -112,7 +115,13 @@
 	    this.state.text = "";
 	  },
 	  render: function render() {
-	    return React.createElement(List, { listState: this.state, title: this.props.title, onAddSubmit: this.onAddSubmit, onAddInputChanged: this.onAddInputChanged, cards: this.props.cards, text: this.state.text });
+	    return React.createElement(List, { listState: this.state,
+	      title: this.props.title,
+	      onAddSubmit: this.onAddSubmit,
+	      onAddInputChanged: this.onAddInputChanged,
+	      cards: this.state.cards,
+	      text: this.state.text
+	    });
 	  }
 	});
 	
@@ -120,7 +129,9 @@
 	var List = function List(props) {
 	  var cards = [];
 	  for (var i = 0; i < props.listState.cards.length; i++) {
-	    cards.push(React.createElement(Card, { text: props.listState.cards[i], key: i }));
+	    cards.push(React.createElement(Card, { text: props.listState.cards[i],
+	      key: i
+	    }));
 	  }
 	  return React.createElement(
 	    "div",
