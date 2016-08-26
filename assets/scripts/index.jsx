@@ -80,8 +80,8 @@ var ListContainer = React.createClass({
 // the List component should contain a number of Cards.
 var List = function(props) {
   var cards = [];
-  for (var i=0; i<props.listState.cards.length; i++) {
-    cards.push(<Card text={props.listState.cards[i]} 
+  for (var i=0; i<props.cards.length; i++) {
+    cards.push(<Card text={props.cards[i]} 
                      key={i} 
               />)
   }
