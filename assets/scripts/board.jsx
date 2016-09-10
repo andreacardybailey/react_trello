@@ -4,8 +4,7 @@ var ListContainer = require('./listContainer');
 var Board = function(props) {
   var listContainers = [];
   for (var i=0; i<props.boardState.lists.length; i++) {
-    listContainers.push(<ListContainer listItem={props.boardState.lists[i]} 
-                                       key={i} 
+    listContainers.push(<ListContainer key={i} 
                                        title={props.boardState.lists[i].title} 
                         />);
   }
