@@ -1,12 +1,12 @@
-var React = require('react');
-var TestUtils = require('react-addons-test-utils');
-var should = require('chai').should();
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+const should = require('chai').should();
 
-var Board = require('../board');
+import Board from '../board';
 
-describe('Board component', function() {
-    it('Renders the board and its title.',  function() {
-      var theBoard = {
+describe('Board component', () => {
+    it('Renders the board and its title.',  () => {
+      const theBoard = {
       title: "Example title",
       lists: [
           {
@@ -20,16 +20,16 @@ describe('Board component', function() {
           }
         ]
       };
-      var renderer = TestUtils.createRenderer();
+      const renderer = TestUtils.createRenderer();
       renderer.render(<Board boardState={theBoard} />);
-      var result = renderer.getRenderOutput();
+      const result = renderer.getRenderOutput();
 
-      var theTitle = result.props.children[0];
+      const theTitle = result.props.children[0];
       theTitle.type.should.equal('h1');
       theTitle.props.children.should.equal(theBoard.title);
       result.props.className.should.contain('board');
       result.props.children.length.should.equal(2);
-      var listContainers = result.props.children[1];
+      const listContainers = result.props.children[1];
       listContainers.length.should.equal(theBoard.lists.length);
     });
 });

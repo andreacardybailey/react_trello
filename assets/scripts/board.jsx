@@ -1,11 +1,11 @@
-var React = require("react");
-var ListContainer = require('./listContainer');
+import React from 'react';
+import ListContainer from './listContainer';
 
-var Board = function(props) {
-  var listContainers = [];
-  for (var i=0; i<props.boardState.lists.length; i++) {
-    listContainers.push(<ListContainer key={i} 
-                                       title={props.boardState.lists[i].title} 
+export default function Board(props) {
+  const listContainers = [];
+  for (let index in props.boardState.lists) {
+    listContainers.push(<ListContainer key={index} 
+                                       title={props.boardState.lists[index].title} 
                         />);
   }
   return (

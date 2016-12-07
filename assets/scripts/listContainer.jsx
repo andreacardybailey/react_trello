@@ -1,20 +1,23 @@
-var React = require("react");
-var List = require('./list');
+import React from 'react';
+import List from './list';
 
-var ListContainer = React.createClass({
-  getInitialState: function() {
-    return {
+export default class ListContainer extends React.Component {
+  constructor(props){      
+    super(props);
+    this.onAddInputChanged = this.onAddInputChanged.bind(this);
+    this.onAddSubmit = this.onAddSubmit.bind(this);         
+    this.state = {
       text: "",
       cards: []
-    };
-  },
-  onAddInputChanged: function(e) {
-    var userInput = e.target.value;
+    }     
+  }
+  onAddInputChanged(e) {
+    let userInput = e.target.value;
     this.setState({
       text: userInput
     });
-  },
-  onAddSubmit: function(e) {
+  }
+  onAddSubmit(e) {
     e.preventDefault();
     var newList = this.state.cards;
     newList.push(this.state.text);
@@ -22,8 +25,8 @@ var ListContainer = React.createClass({
       cards: newList
     });
     this.state.text = "";
-  },
-  render: function() {
+  }
+  render() {
     return (
       <List listState={this.state} 
             title={this.props.title} 
@@ -34,6 +37,5 @@ var ListContainer = React.createClass({
       />
     );
   }
-});
+}
 
-module.exports = ListContainer;

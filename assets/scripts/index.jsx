@@ -1,11 +1,11 @@
-var React = require("react");
-var ReactDOM = require("react-dom");
-var Trello = require('./trello');
+import React from 'react';
+import ReactDOM from "react-dom";
+import Trello from './trello';
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  ReactDOM.render(<Trello />, document.getElementById("app"));
-});
+document.addEventListener("DOMContentLoaded", () =>
+  ReactDOM.render(<Trello />, document.getElementById("app"))
+);
 
 
 

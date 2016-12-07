@@ -1,17 +1,17 @@
-var React = require('react');
-var TestUtils = require('react-addons-test-utils');
-var should = require('chai').should();
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+const should = require('chai').should();
 
-var Trello = require('../trello');
+import Trello from '../trello';
 
-describe('Trello component', function() {
-    it('Renders the Trello Board.',  function() {
+describe('Trello component', () => {
+    it('Renders the Trello Board.',  () => {
       
-      var renderer = TestUtils.createRenderer();
+      const renderer = TestUtils.createRenderer();
       renderer.render(<Trello />);
 
-      var result = renderer.getRenderOutput();
-      var resultType = typeof(result.type);
+      const result = renderer.getRenderOutput();
+      const resultType = typeof(result.type);
       resultType.should.equal('function');
     });
 });

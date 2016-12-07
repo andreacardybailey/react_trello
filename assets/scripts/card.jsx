@@ -1,11 +1,9 @@
-var React = require("react");
+import React from 'react';
 
-var Card = function(props) {
+export default function Card(props) {
   return (
     <li className="card">
       {props.text}
     </li>
   );
 };
-
-module.exports = Card;

@@ -1,9 +1,10 @@
-var React = require("react");
-var Board = require('./board');
+import React from 'react';
+import Board from './board';
 
-var Trello = React.createClass({
-  getInitialState: function() {
-    return {
+export default class Trello extends React.Component {
+  constructor(props){      
+    super(props)         
+    this.state = {
       title: "Things to get done",
       lists: [
           {
@@ -16,16 +17,13 @@ var Trello = React.createClass({
             title: "Completed"
           }
       ]
-    };
-  },
-  render: function() {
+    }     
+  }
+  render() {
     return (
       <Board boardState={this.state} />
     );
   }
-});
-
-module.exports = Trello;
-
+};
 
 

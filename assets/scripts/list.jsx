@@ -1,12 +1,13 @@
-var React = require("react");
-var Card = require('./card');
+import React from 'react';
+import Card from './card';
 
-var List = function(props) {
-  var cards = [];
-  for (var i=0; i<props.cards.length; i++) {
-    cards.push(<Card text={props.cards[i]} 
-                     key={i} 
-              />)
+export default function List(props) {
+  const cards = [];
+
+  for (let index in props.cards) {
+   cards.push(<Card text={props.cards[index]} 
+                     key={index} 
+              />)  
   }
   return (
     <div className="list">
@@ -21,5 +22,3 @@ var List = function(props) {
     </div>
   );
 };
-
-module.exports = List;

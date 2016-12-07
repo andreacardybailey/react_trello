@@ -44,14 +44,24 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	var React = __webpack_require__(1);
-	var ReactDOM = __webpack_require__(34);
-	var Trello = __webpack_require__(172);
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(34);
+	
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+	
+	var _trello = __webpack_require__(172);
+	
+	var _trello2 = _interopRequireDefault(_trello);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	document.addEventListener("DOMContentLoaded", function () {
-	  ReactDOM.render(React.createElement(Trello, null), document.getElementById("app"));
+	  return _reactDom2.default.render(_react2.default.createElement(_trello2.default, null), document.getElementById("app"));
 	});
 
 /***/ },
@@ -21368,16 +21378,39 @@
 /* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	var React = __webpack_require__(1);
-	var Board = __webpack_require__(173);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
-	var Trello = React.createClass({
-	  displayName: "Trello",
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	  getInitialState: function getInitialState() {
-	    return {
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _board = __webpack_require__(173);
+	
+	var _board2 = _interopRequireDefault(_board);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Trello = function (_React$Component) {
+	  _inherits(Trello, _React$Component);
+	
+	  function Trello(props) {
+	    _classCallCheck(this, Trello);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Trello).call(this, props));
+	
+	    _this.state = {
 	      title: "Things to get done",
 	      lists: [{
 	        title: "To do"
@@ -21387,35 +21420,55 @@
 	        title: "Completed"
 	      }]
 	    };
-	  },
-	  render: function render() {
-	    return React.createElement(Board, { boardState: this.state });
+	    return _this;
 	  }
-	});
 	
-	module.exports = Trello;
+	  _createClass(Trello, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_board2.default, { boardState: this.state });
+	    }
+	  }]);
+	
+	  return Trello;
+	}(_react2.default.Component);
+	
+	exports.default = Trello;
+	;
 
 /***/ },
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	var React = __webpack_require__(1);
-	var ListContainer = __webpack_require__(174);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = Board;
 	
-	var Board = function Board(props) {
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _listContainer = __webpack_require__(174);
+	
+	var _listContainer2 = _interopRequireDefault(_listContainer);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function Board(props) {
 	  var listContainers = [];
-	  for (var i = 0; i < props.boardState.lists.length; i++) {
-	    listContainers.push(React.createElement(ListContainer, { key: i,
-	      title: props.boardState.lists[i].title
+	  for (var index in props.boardState.lists) {
+	    listContainers.push(_react2.default.createElement(_listContainer2.default, { key: index,
+	      title: props.boardState.lists[index].title
 	    }));
 	  }
-	  return React.createElement(
-	    "div",
-	    { className: "board clearfix" },
-	    React.createElement(
-	      "h1",
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'board clearfix' },
+	    _react2.default.createElement(
+	      'h1',
 	      null,
 	      props.boardState.title
 	    ),
@@ -21429,87 +21482,134 @@
 /* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	var React = __webpack_require__(1);
-	var List = __webpack_require__(175);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
-	var ListContainer = React.createClass({
-	  displayName: "ListContainer",
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	  getInitialState: function getInitialState() {
-	    return {
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _list = __webpack_require__(175);
+	
+	var _list2 = _interopRequireDefault(_list);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ListContainer = function (_React$Component) {
+	  _inherits(ListContainer, _React$Component);
+	
+	  function ListContainer(props) {
+	    _classCallCheck(this, ListContainer);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ListContainer).call(this, props));
+	
+	    _this.onAddInputChanged = _this.onAddInputChanged.bind(_this);
+	    _this.onAddSubmit = _this.onAddSubmit.bind(_this);
+	    _this.state = {
 	      text: "",
 	      cards: []
 	    };
-	  },
-	  onAddInputChanged: function onAddInputChanged(e) {
-	    var userInput = e.target.value;
-	    this.setState({
-	      text: userInput
-	    });
-	  },
-	  onAddSubmit: function onAddSubmit(e) {
-	    e.preventDefault();
-	    var newList = this.state.cards;
-	    newList.push(this.state.text);
-	    this.setState({
-	      cards: newList
-	    });
-	    this.state.text = "";
-	  },
-	  render: function render() {
-	    return React.createElement(List, { listState: this.state,
-	      title: this.props.title,
-	      onAddSubmit: this.onAddSubmit,
-	      onAddInputChanged: this.onAddInputChanged,
-	      cards: this.state.cards,
-	      text: this.state.text
-	    });
+	    return _this;
 	  }
-	});
 	
-	module.exports = ListContainer;
+	  _createClass(ListContainer, [{
+	    key: 'onAddInputChanged',
+	    value: function onAddInputChanged(e) {
+	      var userInput = e.target.value;
+	      this.setState({
+	        text: userInput
+	      });
+	    }
+	  }, {
+	    key: 'onAddSubmit',
+	    value: function onAddSubmit(e) {
+	      e.preventDefault();
+	      var newList = this.state.cards;
+	      newList.push(this.state.text);
+	      this.setState({
+	        cards: newList
+	      });
+	      this.state.text = "";
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(_list2.default, { listState: this.state,
+	        title: this.props.title,
+	        onAddSubmit: this.onAddSubmit,
+	        onAddInputChanged: this.onAddInputChanged,
+	        cards: this.state.cards,
+	        text: this.state.text
+	      });
+	    }
+	  }]);
+	
+	  return ListContainer;
+	}(_react2.default.Component);
+	
+	exports.default = ListContainer;
 
 /***/ },
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
-	var React = __webpack_require__(1);
-	var Card = __webpack_require__(176);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = List;
 	
-	var List = function List(props) {
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _card = __webpack_require__(176);
+	
+	var _card2 = _interopRequireDefault(_card);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function List(props) {
 	  var cards = [];
-	  for (var i = 0; i < props.cards.length; i++) {
-	    cards.push(React.createElement(Card, { text: props.cards[i],
-	      key: i
+	
+	  for (var index in props.cards) {
+	    cards.push(_react2.default.createElement(_card2.default, { text: props.cards[index],
+	      key: index
 	    }));
 	  }
-	  return React.createElement(
-	    "div",
-	    { className: "list" },
-	    React.createElement(
-	      "h2",
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'list' },
+	    _react2.default.createElement(
+	      'h2',
 	      null,
 	      props.title
 	    ),
-	    React.createElement(
-	      "ul",
-	      { className: "cards" },
+	    _react2.default.createElement(
+	      'ul',
+	      { className: 'cards' },
 	      cards
 	    ),
-	    React.createElement(
-	      "form",
+	    _react2.default.createElement(
+	      'form',
 	      { onSubmit: props.onAddSubmit },
-	      React.createElement("input", { type: "text", name: "card", placeholder: "Add card", onChange: props.onAddInputChanged, value: props.text }),
-	      React.createElement("input", { type: "submit" })
+	      _react2.default.createElement('input', { type: 'text', name: 'card', placeholder: 'Add card', onChange: props.onAddInputChanged, value: props.text }),
+	      _react2.default.createElement('input', { type: 'submit' })
 	    )
 	  );
 	};
-	
-	module.exports = List;
 
 /***/ },
 /* 176 */
@@ -21517,17 +21617,24 @@
 
 	"use strict";
 	
-	var React = __webpack_require__(1);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = Card;
 	
-	var Card = function Card(props) {
-	  return React.createElement(
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function Card(props) {
+	  return _react2.default.createElement(
 	    "li",
 	    { className: "card" },
 	    props.text
 	  );
 	};
-	
-	module.exports = Card;
 
 /***/ }
 /******/ ]);

@@ -1,17 +1,17 @@
-var React = require('react');
-var TestUtils = require('react-addons-test-utils');
-var should = require('chai').should();
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+const should = require('chai').should();
 
-var Card = require('../card');
+import Card from '../card';
 
-describe('Card component', function() {
-    it('Renders a card',  function() {
-        var text = "Example text";
+describe('Card component', () => {
+    it('Renders a card',  () => {
+        const text = "Example text";
 
-        var renderer = TestUtils.createRenderer();
+        const renderer = TestUtils.createRenderer();
         renderer.render(<Card text={text} />);
 
-        var result = renderer.getRenderOutput();
+        const result = renderer.getRenderOutput();
         
         result.props.className.should.equal('card');
         result.props.children.should.equal(text);
